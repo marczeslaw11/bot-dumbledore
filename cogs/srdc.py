@@ -4,7 +4,7 @@ from discord.ext import commands
 import srcomapi, srcomapi.datatypes as dt
 import json
 
-with open('srdc.json', 'r') as f:
+with open('./assets/srdc.json', 'r') as f:
     speedgames = json.load(f)
 
 games = list(speedgames.keys())
