@@ -86,7 +86,8 @@ async def load(extension):
 @commands.has_role("dumbledore")
 async def unload(extension):
     try:
-        client.unload_extension(extension)
+        ext_name = folder + '.' + extension
+        client.unload_extension(ext_name)
         print('Unloaded {}'.format(extension))
     except Exception as error:
         print('{} cannot be unloaded. [{}]'.format(extension, error))
