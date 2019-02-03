@@ -15,9 +15,9 @@ response = requests.get("https://www.potterapi.com/v1/spells?key=$2a$10$SejjtOVr
 spells = response.json()
 
 #read dumbledore quotes and image links
-d_file = open('d_quotes.txt', 'r')
+d_file = open('./assets/d_quotes.txt', 'r')
 d_quotes = d_file.readlines()
-d_images = open('d_images.txt', 'r').readlines()
+d_images = open('./assets/d_images.txt', 'r').readlines()
 
 #info to post about the houses
 houses = [

@@ -15,6 +15,9 @@ config.read('config.ini')
 config.sections()
 
 TOKEN = config['LOGIN']['token']
+folder = "cogs"
+points_file = "assets/points.json"
+point_log = "assets/point_log.txt"
 
 client = commands.Bot(command_prefix = '/')
 client.remove_command('help')
@@ -28,7 +31,7 @@ dumbledore_negative = ['No, *I* am Dumbledore.', 'You might be Spartacus, but yo
 def point_mng(house, command, amount):
     if amount < 0:
         return "Don't play with negatives, boy!"
-    with open('points.json', 'r') as f:
+    with open(points_file, 'r') as f:
         points = json.load(f)
         if command in hp_mod_commands:
             if command == "give" or command == "add":
@@ -43,14 +46,14 @@ def point_mng(house, command, amount):
                 message = "%s has %d point(s) now." % (house, points[house])
         else:
             return "That's not how this works."
-        with open('points.json', 'w') as outfile:
+        with open(points_file, 'w') as outfile:
             json.dump(points, outfile)
         return message
 
 def point_log(house, command, amount, reason, point_giver):
     reason_string = " ".join(reason)
     date = time.asctime( time.localtime(time.time()) )
-    with open("point_log.txt", "a") as myfile:
+    with open(point_log, "a") as myfile:
         myfile.write("House: %s | action: %s | %d points | Given by: %s | Reason: %s | %s \n" % (house, command, amount, point_giver, reason_string, date))
 
 def find_winner_color(points):
@@ -73,7 +76,8 @@ async def on_ready():
 @commands.has_role("dumbledore")
 async def load(extension):
     try:
-        client.load_extension(extension)
+        ext_name = foler + '.' + extension
+        client.load_extension(ext_name)
         print('Loaded {}'.format(extension))
     except Exception as error:
         print('{} cannot be loaded. [{}]'.format(extension, error))
@@ -90,7 +94,8 @@ async def unload(extension):
 if __name__ == '__main__':
     for extension in extensions:
         try:
-            client.load_extension(extension)
+            ext_name = folder + '.' + extension
+            client.load_extension(ext_name)
         except Exception as error:
             print('{} cannot be loaded. [{}]'.format(extension, error))
 
@@ -122,10 +127,10 @@ async def clear(ctx, *args):
 @client.command()
 async def points(year=None):
     if year is None:
-        with open('points.json', 'r') as f:
+        with open(points_file, 'r') as f:
             points = json.load(f)
     elif year == '2018':
-        with open('points2018.json', 'r') as f:
+        with open('assets/points2018.json', 'r') as f:
             points = json.load(f)
 
     winner_color = find_winner_color(points)
