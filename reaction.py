@@ -1,3 +1,4 @@
+# This is the cog file for the bot's reaction functionality
 import discord
 from discord.ext import commands
 from discord.utils import get

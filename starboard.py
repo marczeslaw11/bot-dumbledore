@@ -1,3 +1,5 @@
+#Cog file for the upcoming starboard functionality
+
 import discord
 from discord.ext import commands
 

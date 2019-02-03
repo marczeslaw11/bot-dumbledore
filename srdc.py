@@ -1,3 +1,4 @@
+#This is the cog file for the speedrun.com functionality
 import discord
 from discord.ext import commands
 import srcomapi, srcomapi.datatypes as dt

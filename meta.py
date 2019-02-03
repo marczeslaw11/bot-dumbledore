@@ -1,3 +1,4 @@
+#This is the cog file for the meta-commands
 import discord
 from discord.ext import commands
 import re
