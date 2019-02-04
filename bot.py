@@ -22,7 +22,6 @@ point_log = "assets/point_log.txt"
 client = commands.Bot(command_prefix = '/')
 client.remove_command('help')
 extensions = ['meta', 'hp_api', 'housecup', 'reaction', 'srdc']
-dumbledore_id = 507355505258135566
 
 status = ['with your minds', 'with your hearts', 'with your bodies', 'with your nerves']
 hp_mod_commands = ['give', 'add', 'set', 'subtract', 'remove']
@@ -108,8 +107,6 @@ async def clear(ctx, *args):
     author = ctx.message.author
     channel = ctx.message.channel
     messages = []
-
-
     if args[0].isdigit() == True:
         amount = args[0]
         users = args[1:]
@@ -118,7 +115,6 @@ async def clear(ctx, *args):
         amount = 1
         users = args
         print('else')
-
     async for message in client.logs_from(channel, limit=int(amount) + 1):
         for user in users:
             user_id = re.sub(r'\D', "", user)
