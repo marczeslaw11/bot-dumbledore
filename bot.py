@@ -22,7 +22,7 @@ point_log = "assets/point_log.txt"
 client = commands.Bot(command_prefix = '/')
 client.remove_command('help')
 extensions = ['meta', 'hp_api', 'housecup', 'reaction', 'srdc']
-dumbledore_id = "507355505258135566"
+dumbledore_id = 507355505258135566
 
 status = ['with your minds', 'with your hearts', 'with your bodies', 'with your nerves']
 hp_mod_commands = ['give', 'add', 'set', 'subtract', 'remove']
