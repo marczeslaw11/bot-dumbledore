@@ -74,7 +74,7 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name='with your nerves'))
 
 @client.command()
-@commands.has_role(dumbledore_id)
+@commands.has_role("dumbledore")
 async def load(extension):
     try:
         ext_name = foler + '.' + extension
@@ -84,7 +84,7 @@ async def load(extension):
         print('{} cannot be loaded. [{}]'.format(extension, error))
 
 @client.command()
-@commands.has_role(dumbledore_id)
+@commands.has_role("dumbledore")
 async def unload(extension):
     try:
         ext_name = folder + '.' + extension
@@ -147,25 +147,25 @@ async def points(year=None):
     #await client.say("Gryffindor: %d points\nRavenclaw: %d points\nSlytherin: %d points\nHufflepuff: %d points" % (, , points["slytherin"], points["hufflepuff"]))
 
 @client.command(name="gryffindor", pass_context=True, aliases=['g'])
-@commands.has_role(dumbledore_id)
+@commands.has_role("dumbledore")
 async def gryffindor(ctx, command: str, amount: int, *reason):
     point_log("Gryffindor", command, amount, reason, ctx.message.author.name)
     await client.say(point_mng("Gryffindor", command, amount))
 
 @client.command(name="slytherin", pass_context=True, aliases=['s'])
-@commands.has_role(dumbledore_id)
+@commands.has_role("dumbledore")
 async def gryffindor(ctx, command: str, amount: int, *reason):
     point_log("Slytherin", command, amount, reason, ctx.message.author.name)
     await client.say(point_mng("Slytherin", command, amount))
 
 @client.command(name="hufflepuff", pass_context=True, aliases=['h'])
-@commands.has_role(dumbledore_id)
+@commands.has_role("dumbledore")
 async def gryffindor(ctx, command: str, amount: int, *reason):
     point_log("Hufflepuff", command, amount, reason, ctx.message.author.name)
     await client.say(point_mng("Hufflepuff", command, amount))
 
 @client.command(name="ravenclaw", pass_context=True, aliases=['r'])
-@commands.has_role(dumbledore_id)
+@commands.has_role("dumbledore")
 async def gryffindor(ctx, command: str, amount: int, *reason):
     point_log("Ravenclaw", command, amount, reason, ctx.message.author.name)
     await client.say(point_mng("Ravenclaw", command, amount))
