@@ -1,5 +1,3 @@
-#main bot file
-import configparser
 import discord
 import re
 import random
@@ -9,19 +7,19 @@ import asyncio
 from itertools import cycle
 import json
 import time
+import os
 
-config = configparser.ConfigParser()
-config.read('config.ini')
-config.sections()
 
-TOKEN = config['LOGIN']['token']
-folder = "cogs"
-points_file = "assets/points.json"
-point_log = "assets/point_log.txt"
+TOKEN = "NTA3MzUwODQ5ODg3MDEwODI2.Drvb9w.LZUeO9NJwEwvOyknSNQJipeXZAM"
 
 client = commands.Bot(command_prefix = '/')
 client.remove_command('help')
-extensions = ['meta', 'hp_api', 'housecup', 'reaction', 'srdc']
+extensions = ['meta', 'hp_api', 'housecup', 'reaction', 'fun_api']
+extensions_route = "cogs."
+bot_dir = os.path.dirname(__file__)
+points_log_path = os.path.join(bot_dir, "assets/point_log.txt")
+points_path = os.path.join(bot_dir, "assets/points.json")
+points_2018_path = os.path.join(bot_dir, "assets/points.json")
 
 status = ['with your minds', 'with your hearts', 'with your bodies', 'with your nerves']
 hp_mod_commands = ['give', 'add', 'set', 'subtract', 'remove']
@@ -31,7 +29,9 @@ dumbledore_negative = ['No, *I* am Dumbledore.', 'You might be Spartacus, but yo
 def point_mng(house, command, amount):
     if amount < 0:
         return "Don't play with negatives, boy!"
-    with open(points_file, 'r') as f:
+    elif amount == 0:
+        return "Giving 0 points is a dick move, even by Dumbledore standards."
+    with open(points_path, 'r') as f:
         points = json.load(f)
         if command in hp_mod_commands:
             if command == "give" or command == "add":
@@ -46,14 +46,14 @@ def point_mng(house, command, amount):
                 message = "%s has %d point(s) now." % (house, points[house])
         else:
             return "That's not how this works."
-        with open(points_file, 'w') as outfile:
+        with open(points_path, 'w') as outfile:
             json.dump(points, outfile)
         return message
 
 def point_log(house, command, amount, reason, point_giver):
     reason_string = " ".join(reason)
     date = time.asctime( time.localtime(time.time()) )
-    with open(point_log, "a") as myfile:
+    with open(points_log_path, "a") as myfile:
         myfile.write("House: %s | action: %s | %d points | Given by: %s | Reason: %s | %s \n" % (house, command, amount, point_giver, reason_string, date))
 
 def find_winner_color(points):
@@ -76,8 +76,7 @@ async def on_ready():
 @commands.has_role("dumbledore")
 async def load(extension):
     try:
-        ext_name = foler + '.' + extension
-        client.load_extension(ext_name)
+        client.load_extension(extensions_route + extension)
         print('Loaded {}'.format(extension))
     except Exception as error:
         print('{} cannot be loaded. [{}]'.format(extension, error))
@@ -86,8 +85,7 @@ async def load(extension):
 @commands.has_role("dumbledore")
 async def unload(extension):
     try:
-        ext_name = folder + '.' + extension
-        client.unload_extension(ext_name)
+        client.unload_extension(extensions_route + extension)
         print('Unloaded {}'.format(extension))
     except Exception as error:
         print('{} cannot be unloaded. [{}]'.format(extension, error))
@@ -95,40 +93,17 @@ async def unload(extension):
 if __name__ == '__main__':
     for extension in extensions:
         try:
-            ext_name = folder + '.' + extension
-            client.load_extension(ext_name)
+            client.load_extension(extensions_route + extension)
         except Exception as error:
             print('{} cannot be loaded. [{}]'.format(extension, error))
-
-'''user: discord.Member = None'''
-'''@client.command(pass_context=True)
-@commands.has_role("🛡️Prefect")
-async def clear(ctx, *args):
-    author = ctx.message.author
-    channel = ctx.message.channel
-    messages = []
-    if args[0].isdigit() == True:
-        amount = args[0]
-        users = args[1:]
-        print('true')
-    else:
-        amount = 1
-        users = args
-        print('else')
-    async for message in client.logs_from(channel, limit=int(amount) + 1):
-        for user in users:
-            user_id = re.sub(r'\D', "", user)
-            if user_id == message.author.id:
-                messages.append(message)
-    await client.delete_messages(messages)'''
 
 @client.command()
 async def points(year=None):
     if year is None:
-        with open(points_file, 'r') as f:
+        with open(points_path, 'r') as f:
             points = json.load(f)
     elif year == '2018':
-        with open('assets/points2018.json', 'r') as f:
+        with open(points_2018_path, 'r') as f:
             points = json.load(f)
 
     winner_color = find_winner_color(points)

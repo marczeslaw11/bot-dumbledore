@@ -5,6 +5,7 @@ import requests
 import random
 import difflib
 import wikia
+import os
 
 api_key = "$2a$10$SejjtOVrY2l7cl.CZfBDJuzB5A/737aT0M8DDbdRr96.B8vx1IlNi"
 url_base = "https://www.potterapi.com/v1"
@@ -14,12 +15,10 @@ spell_list = []
 response = requests.get("https://www.potterapi.com/v1/spells?key=$2a$10$SejjtOVrY2l7cl.CZfBDJuzB5A/737aT0M8DDbdRr96.B8vx1IlNi")
 spells = response.json()
 
-#read dumbledore quotes and image links
-d_file = open('./assets/d_quotes.txt', 'r')
+d_file = open('d_quotes.txt', 'r')
 d_quotes = d_file.readlines()
-d_images = open('./assets/d_images.txt', 'r').readlines()
+d_images = open('d_images.txt', 'r').readlines()
 
-#info to post about the houses
 houses = [
     {"name": "Slytherin", "desc": "Slytherin house values ambition, cunning and resourcefulness and was founded by Salazar Slytherin. Its emblematic animal is the serpent, and its colours are emerald green and silver.", "url": "https://vignette.wikia.nocookie.net/harrypotter/images/d/d3/0.61_Slytherin_Crest_Transparent.png/revision/latest?cb=20161020182557", "color": 0x00c400},
     {"name": "Gryffindor", "desc": "Gryffindor values bravery, daring, nerve, and chivalry. Its emblematic animal is the lion and its colours are scarlet and gold.", "url": "https://vignette.wikia.nocookie.net/harrypotter/images/8/8e/0.31_Gryffindor_Crest_Transparent.png/revision/latest?cb=20161124074004", "color": 0xae0001},
@@ -48,8 +47,6 @@ class Hp_api:
     @commands.command()
     async def spells(self):
         spell_list_str = ', '.join(spell_list)
-
-        #Create and post the response embed
         embed=discord.Embed(title="List of spells", description=spell_list_str, color=0x6464db)
         embed.set_thumbnail(url="https://media1.tenor.com/images/c6778ec7f0af4c62075c771ae62288fc/tenor.gif")
         await self.client.say(embed=embed)
@@ -62,8 +59,6 @@ class Hp_api:
         desc = house["desc"]
         url = house["url"]
         color = house["color"]
-
-        #Create and post the response embed
         house=discord.Embed(title=title, description=desc, color=color)
         house.set_thumbnail(url=url)
         await self.client.say(embed=house)
@@ -72,11 +67,10 @@ class Hp_api:
     async def quote(self):
         quote = random.choice(d_quotes)
         image = random.choice(d_images)
-
-        #Create and post the response embed
         embed = discord.Embed(title="A great quote from myself.", description=quote)
         embed.set_thumbnail(url=image)
         await self.client.say(embed=embed)
+        print(quote, image)
 
     @commands.command()
     async def spell(self, *spell):
@@ -86,8 +80,9 @@ class Hp_api:
         spell_name = requested_spell["spell"]
         spell_type = requested_spell["type"]
         effect = requested_spell["effect"]
+        print(type, effect)
+        print(requested_spell)
 
-        #Create and post  the response embed
         embed=discord.Embed(title=spell_name, color=0x6b93ed)
         embed.add_field(name="Type:", value=spell_type, inline=True)
         embed.add_field(name="Effect:", value=effect, inline=True)
@@ -102,14 +97,12 @@ class Hp_api:
         url = page.url
         clear_url = url.replace(' ', '_')
         image = page.images
-        # Provide a default thumbnail if the article doesn't have any pictures
         if image == []:
             image = "https://upload.wikimedia.org/wikipedia/commons/e/e5/Coat_of_arms_placeholder_with_question_mark_and_no_border.png"
         else:
             image = image[-1]
         title = page.title
 
-        #Create and post the response embed
         embed=discord.Embed(title=title, url=clear_url, description=summary)
         embed.set_thumbnail(url=image)
         await self.client.say(embed=embed)

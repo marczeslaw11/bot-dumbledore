@@ -1,10 +1,9 @@
-#This is the cog file for the speedrun.com functionality
 import discord
 from discord.ext import commands
 import srcomapi, srcomapi.datatypes as dt
 import json
 
-with open('./assets/srdc.json', 'r') as f:
+with open('srdc.json', 'r') as f:
     speedgames = json.load(f)
 
 games = list(speedgames.keys())
@@ -17,7 +16,7 @@ class Srdc:
     @commands.command(pass_context=True)
     async def wr(self, ctx, game:str, category:str):
         if game in games:
-            game = api.get_game(speedgames.get(game))
+            category_list = api.get_game(speedgames.get(game)).categories
             for cat in category_list:
                 print(cat.name)
         else:

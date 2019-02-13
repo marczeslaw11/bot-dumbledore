@@ -1,3 +1,40 @@
-
-House: Hufflepuff | action: add | 130 points | Given by: mczolly | Reason:  | Tue Jan 22 00:06:26 2019 
-House: Slytherin | action: give | 82 points | Given by: mczolly | Reason:  | Thu Jan 24 01:50:35 2019 
+House: Gryffindor | action: give | 1 points | Given by: mczolly | Reason:  | Sun Jan 27 09:30:17 2019 
+House: Gryffindor | action: subtract | 1 points | Given by: mczolly | Reason:  | Sun Jan 27 09:30:23 2019 
+House: Hufflepuff | action: add | 1 points | Given by: mczolly | Reason:  | Sun Jan 27 10:12:07 2019 
+House: Slytherin | action: add | 5 points | Given by: mczolly | Reason:  | Sun Jan 27 15:34:16 2019 
+House: Slytherin | action: subtract | 5 points | Given by: mczolly | Reason: Forgot to add a reason. | Sun Jan 27 15:36:26 2019 
+House: Slytherin | action: add | 5 points | Given by: mczolly | Reason: Miesya has done some amazing designs. | Sun Jan 27 15:37:16 2019 
+House: Gryffindor | action: add | 10 points | Given by: mczolly | Reason:  | Mon Jan 28 21:18:29 2019 
+House: Gryffindor | action: remove | 10 points | Given by: mczolly | Reason:  | Mon Jan 28 21:18:45 2019 
+House: Gryffindor | action: add | 10 points | Given by: mczolly | Reason: Nixxo got a WR in HP7.1 | Mon Jan 28 21:18:55 2019 
+House: Hufflepuff | action: add | 5 points | Given by: mczolly | Reason: Raman got a new hp3 hundo pb: 1:37:38 | Tue Jan 29 11:33:23 2019 
+House: Hufflepuff | action: add | 5 points | Given by: mczolly | Reason: QWC PB 4:24 (mczolly) | Tue Jan 29 18:51:46 2019 
+House: Ravenclaw | action: give | 5 points | Given by: mczolly | Reason: maxiim submitting his thesis | Wed Jan 30 08:56:38 2019 
+House: Gryffindor | action: give | 5 points | Given by: mczolly | Reason: Emphus finished university finally lol | Wed Jan 30 09:58:14 2019 
+House: Gryffindor | action: give | 5 points | Given by: mczolly | Reason: AJ getting a PB in QWC WC% | Wed Jan 30 19:49:36 2019 
+House: Hufflepuff | action: give | 5 points | Given by: mczolly | Reason: Zolly getting a PB in QWC WC%. | Wed Jan 30 19:49:46 2019 
+House: Hufflepuff | action: add | 5 points | Given by: mczolly | Reason: Raman hp3 any% pb 1:17:06 | Thu Jan 31 09:52:12 2019 
+House: Hufflepuff | action: add | 10 points | Given by: mczolly | Reason: Zolly getting a QWC GBA Beat World Cup WR | Thu Jan 31 16:50:52 2019 
+House: Hufflepuff | action: add | 5 points | Given by: mczolly | Reason: Zolly got a PB in HP2 glichless | Fri Feb  1 16:23:30 2019 
+House: Hufflepuff | action: add | 10 points | Given by: mczolly | Reason: Zolly getting a new HP2 PB 1:05:11 | Sat Feb  2 21:10:44 2019 
+House: Hufflepuff | action: remove | 5 points | Given by: mczolly | Reason: Accidentally given out 10 points for PB | Sat Feb  2 21:22:35 2019 
+House: Gryffindor | action: add | 5 points | Given by: mczolly | Reason: Nixxo got an HP1 Any% PB 1:19:25 | Sun Feb  3 20:31:35 2019 
+House: Ravenclaw | action: add | 30 points | Given by: mczolly | Reason: Maxiim did a pyramid in a larger stream | Sun Feb  3 20:32:03 2019 
+House: Hufflepuff | action: add | 5 points | Given by: mczolly | Reason: Raman got an hp1 any pb: 1:19:57 | Mon Feb  4 08:00:42 2019 
+House: Hufflepuff | action: remove | 5 points | Given by: mczolly | Reason: Raman didn't get a new pb after all | Mon Feb  4 09:55:46 2019 
+House: Hufflepuff | action: add | 5 points | Given by: mczolly | Reason: Raman did get a PB in hp1 any: 1:19:12 | Mon Feb  4 11:00:24 2019 
+House: Slytherin | action: add | 5 points | Given by: mczolly | Reason: mies a got glitchless hp2 pb a long long time ago | Mon Feb  4 11:57:07 2019 
+House: Ravenclaw | action: add | 5 points | Given by: mczolly | Reason: 2:17:02 hp5 pb by marczeslaw | Mon Feb  4 16:42:38 2019 
+House: Ravenclaw | action: add | 10 points | Given by: mczolly | Reason: For Marczeslaw WR in Hp5 Any | Mon Feb  4 19:12:49 2019 
+House: Gryffindor | action: add | 1 points | Given by: emphus | Reason: Emphus abusive test | Mon Feb  4 21:08:43 2019 
+House: Gryffindor | action: substract | 1 points | Given by: emphus | Reason: Emphus dont wanna be banned pls | Mon Feb  4 21:09:39 2019 
+House: Gryffindor | action: subtract | 1 points | Given by: emphus | Reason: Emphus dont wanna be banned pls | Mon Feb  4 21:09:59 2019 
+House: Gryffindor | action: substract | 50 points | Given by: emphus | Reason: Emphus is bad boiiii | Mon Feb  4 21:30:03 2019 
+House: Gryffindor | action: subtract | 50 points | Given by: emphus | Reason: Emphus is bad boiiii | Mon Feb  4 21:30:23 2019 
+House: Gryffindor | action: add | 50 points | Given by: emphus | Reason: Emphus isnt really that bad | Mon Feb  4 21:30:34 2019 
+House: Gryffindor | action: add | 50 points | Given by: mczolly | Reason: For the two winners of the GBA blind race (AJ and Nixxo). | Tue Feb  5 23:55:35 2019 
+House: Ravenclaw | action: add | 5 points | Given by: mczolly | Reason: marczeslaw hp3 bany PB: 1:11:37 | Wed Feb  6 17:49:22 2019 
+House: Gryffindor | action: add | 5 points | Given by: mczolly | Reason: nixxo glitchless pb 47:33 | Fri Feb  8 06:05:02 2019 
+House: Gryffindor | action: add | 5 points | Given by: mczolly | Reason: nixxo 1:27:27 gba hp1 pb 3 hours timesave pog | Fri Feb  8 21:21:55 2019 
+House: Gryffindor | action: add | 0 points | Given by: mczolly | Reason:  | Sat Feb  9 15:45:55 2019 
+House: Gryffindor | action: add | 0 points | Given by: mczolly | Reason:  | Sun Feb 10 11:14:22 2019 

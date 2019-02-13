@@ -1,4 +1,3 @@
-#This is the cog file for the bot's house cup related functionality
 import discord
 import random
 from discord.ext import commands
