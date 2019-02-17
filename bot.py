@@ -14,7 +14,7 @@ TOKEN = "NTA3MzUwODQ5ODg3MDEwODI2.Drvb9w.LZUeO9NJwEwvOyknSNQJipeXZAM"
 
 client = commands.Bot(command_prefix = '/')
 client.remove_command('help')
-extensions = ['meta', 'hp_api', 'housecup', 'reaction', 'fun_api']
+extensions = ['meta', 'hp_api', 'housecup', 'reaction', 'fun_api', 'mod']
 extensions_route = "cogs."
 bot_dir = os.path.dirname(__file__)
 points_log_path = os.path.join(bot_dir, "assets/point_log.txt")
