@@ -75,6 +75,54 @@ class Fun_api:
         embed.add_field(name="Bordering countries:", value=borders, inline=True)
         await self.client.say(embed=embed)
 
+    @commands.command()
+    async def chuck(self):
+        response = requests.get('https://api.chucknorris.io/jokes/random').json()
+        joke = response["value"]
+        image = response["url"]
+        embed=discord.Embed(title="Here's a Chuck Norris joke for you.", color=0x6b93ed, description=joke)
+        embed.set_thumbnail(url=image)
+        await self.client.say(embed=embed)
+
+    @commands.command()
+    async def number(self, number):
+        if number.isnumeric():
+            numbers_base_url = 'http://numbersapi.com/'
+            response = requests.get(numbers_base_url + number)
+            number_fact = response.text
+            embed=discord.Embed(title="Here's a random number fact for you:", color=0x6b93ed, description=number_fact)
+            await self.client.say(embed=embed)
+        else:
+            await self.client.say("Are you sure that's a number?")
+
+
+    @commands.command()
+    async def beer(self):
+        flag_url_base = "https://www.countryflags.io/"
+
+        resp = requests.get('http://prost.herokuapp.com/api/v1/beer/rand').json()
+        name = "Your random beer is: " + resp["title"]
+        if resp["abv"]:
+            abv = resp["abv"] + "%"
+        else:
+            abv = "No data"
+        og = resp["og"]
+        nation_code = resp["country"]["key"]
+        if resp["brewery"]:
+            brewery = resp["brewery"]["title"]
+        else:
+            brewery = "No data"
+        country = resp["country"]["title"]
+        flag = flag_url_base + nation_code + "/shiny/64.png"
+
+        embed =discord.Embed(title=name, color=0x6b93ed)
+        embed.set_thumbnail(url=flag)
+        embed.add_field(name="Alcohol By Volume: ", value=abv, inline=True)
+        embed.add_field(name="Original Gravity: ", value=og, inline=True)
+        embed.add_field(name="Brewery: ", value=brewery, inline=True)
+        embed.add_field(name="Nationality: ", value=country, inline=True)
+        await self.client.say(embed=embed)
+
 
 
 def setup(client):
