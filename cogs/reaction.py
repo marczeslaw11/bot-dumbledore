@@ -11,7 +11,7 @@ class Reaction:
         author = message.author
         lowercase = message.content.lower()
 
-        if ':PS1Hagrid:' in message.content and message.author != 'Bot_Dumbledore&#352530':
+        if 'PS1Hagrid' in message.content and message.author != 'Bot_Dumbledore&#352530':
             hagrid = get(self.client.get_all_emojis(), name='PS1Hagrid')
             await self.client.add_reaction(message, hagrid)
 
@@ -48,11 +48,11 @@ class Reaction:
             await self.client.add_reaction(message, letter_w)
             await self.client.add_reaction(message, letter_a)
 
-        if ':LUL:' in message.content:
+        if 'LUL' in message.content:
             lul = get(self.client.get_all_emojis(), name='LUL')
             await self.client.add_reaction(message, lul)
 
-        if ':5rt:' in message.content:
+        if '5rt' in message.content:
             fivert = get(self.client.get_all_emojis(), name='5rt')
             await self.client.add_reaction(message, fivert)
 
