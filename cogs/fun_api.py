@@ -7,10 +7,27 @@ import random
 lyrics_root = "https://api.musixmatch.com/ws/1.1/"
 lyrics_api = "1f4f14fb6b297b2a1aa077c24179856d"
 
+dices = ["https://upload.wikimedia.org/wikipedia/commons/2/2c/Alea_1.png",
+        "https://upload.wikimedia.org/wikipedia/commons/b/b8/Alea_2.png",
+        "https://upload.wikimedia.org/wikipedia/commons/2/2f/Alea_3.png",
+        "https://upload.wikimedia.org/wikipedia/commons/8/8d/Alea_4.png",
+        "https://upload.wikimedia.org/wikipedia/commons/5/55/Alea_5.png",
+        "https://upload.wikimedia.org/wikipedia/commons/f/f4/Alea_6.png"]
+
+brewery_id = "https://sandbox-api.brewerydb.com/v2/beer/random/?key=b5c589eb2f2f7670bd40559b73d48b1d"
+
 cat_root = "https://cat-fact.herokuapp.com/facts"
 
-cat_response = requests.get(cat_root).json()
-cat_fact_list = cat_response["all"]
+file = open('nixxo_quotes.txt', 'r', encoding="latin-1")
+nixxo_quotes = file.readlines()
+
+with open('hp1.txt', 'r', encoding="latin-1") as content_file:
+    content = content_file.read()
+
+hp1_book = content.split("\n\n")
+
+'''cat_response = requests.get(cat_root).json()
+cat_fact_list = cat_response["all"]'''
 
 class Fun_api:
     def __init__(self, client):
@@ -31,10 +48,52 @@ class Fun_api:
         else:
             await self.client.say("No lyrics found, sorry! :(")
 
-    @commands.command(pass_context=True)
+    '''@commands.command(pass_context=True)
     async def catfact(self):
         random_fact = random.choice(cat_fact_list)
-        await self.client.say(random_fact["text"])
+        await self.client.say(random_fact["text"])'''
+
+    @commands.command()
+    async def hp1(self, id : str = None):
+        quote_exists = False
+        if id == None or id.isdigit():
+            if id == None:
+                quote = random.choice(hp1_book)
+                quote_exists = True
+            elif int(id) > (len(hp1_book)) or int(id) < 1:
+                quote_exists = False
+                await self.client.say("We don't have a quote with that ID yet.")
+            else:
+                quote = hp1_book[int(id)-1]
+                quote_exists = True
+        else:
+            await self.client.say("That input doesn't make any sense, you dumbo.")
+        if quote_exists:
+            image = "https://m.media-amazon.com/images/I/61Nfa2cpWcL._SL500_.jpg"
+            embed = discord.Embed(title="A quote from HP1 for you", description=quote)
+            embed.set_thumbnail(url=image)
+            await self.client.say(embed=embed)
+
+    @commands.command()
+    async def nixxoquote(self, id : str = None):
+        quote_exists = False
+        if id == None or id.isdigit():
+            if id == None:
+                quote = random.choice(nixxo_quotes)
+                quote_exists = True
+            elif int(id) > (len(nixxo_quotes)) or int(id) < 1:
+                quote_exists = False
+                await self.client.say("We don't have a quote with that ID yet.")
+            else:
+                quote = nixxo_quotes[int(id)-1]
+                quote_exists = True
+        else:
+            await self.client.say("That input doesn't make any sense, you dumbo.")
+        if quote_exists:
+            image = "https://cdn.discordapp.com/attachments/534708305663098890/547809088013336576/emote.png"
+            embed = discord.Embed(title="A great Nixxo quote", description=quote)
+            embed.set_thumbnail(url=image)
+            await self.client.say(embed=embed)
 
     @commands.command(pass_context=True)
     async def country(self, ctx, country):
@@ -123,6 +182,44 @@ class Fun_api:
         embed.add_field(name="Nationality: ", value=country, inline=True)
         await self.client.say(embed=embed)
 
+    @commands.command()
+    async def newbeer(self):
+        flag_url_base = "https://www.countryflags.io/"
+
+        resp = requests.get('https://sandbox-api.brewerydb.com/v2/beer/random?key=b5c589eb2f2f7670bd40559b73d48b1d&withBreweries=y').json()
+        name = "Your random beer is: " + resp["data"]["nameDisplay"]
+        style_desc = resp["data"]["style"]["description"]
+        country_code = resp["data"]["breweries"][0]["locations"][0]["country"]["isoCode"]
+        country = resp["data"]["breweries"][0]["locations"][0]["country"]["displayName"]
+        if resp["data"]["abv"]:
+            abv = resp["data"]["abv"]  + "%"
+        else:
+            abv = "No data"
+        if resp["data"]["ibu"]:
+            ibu = resp["data"]["ibu"]
+        else:
+            ibu = "No data"
+
+        style = resp["data"]["style"]["name"]
+
+        flag = flag_url_base + country_code.lower() + "/shiny/64.png"
+
+        embed =discord.Embed(title=name, color=0x6b93ed)
+        embed.set_thumbnail(url=flag)
+        embed.add_field(name=style, value=style_desc, inline=True)
+        embed.add_field(name="Alcohol By Volume: ", value=abv, inline=True)
+        embed.add_field(name="International Bitterness Units: ", value=ibu, inline=True)
+        embed.add_field(name="Nationality: ", value=country, inline=True)
+        await self.client.say(embed=embed)
+
+    @commands.command()
+    async def dice(self, amount: int):
+        for i in range(1, amount):
+            value = random.randint(1, 6)
+        img = dices[value-1]
+        embed =discord.Embed(title="Your throw:", color=0x6b93ed)
+        embed.set_thumbnail(url=img)
+        await self.client.say(embed=embed)
 
 
 def setup(client):

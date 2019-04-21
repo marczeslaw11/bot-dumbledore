@@ -170,11 +170,20 @@ async def help(ctx):
     hp.add_field(name='/hpwikia [search term]', value='Search the Harry Potter wikia for a specific search term.', inline=False)
     hp.add_field(name='/quote', value='Get a great Dumbledore quote.', inline=False)
 
+    fun=discord.Embed(color=0x6464db)
+    fun.set_author(name="Fun API commands")
+    fun.add_field(name='/beer', value='Get a random beer.', inline=False)
+    fun.add_field(name='/chuck', value='Get a random Chuck Norris joke.', inline=False)
+    fun.add_field(name='/number [search term]', value='Get a random fact about a number', inline=False)
+    fun.add_field(name='/country [search term]', value='Get information about a country. Use a country code e.g. DE/DEU or Germany', inline=False)
+    fun.add_field(name='/nixxoquote [optional: quote id]', value='Get a great Nixxo quote.', inline=False)
+
     await client.say("I've sent you a DM with some guidance, my friend!")
     await client.send_message(author, embed=generic)
     await client.send_message(author, embed=house)
     await client.send_message(author, embed=house_mng)
     await client.send_message(author, embed=hp)
+    await client.send_message(author, embed=fun)
 
 
 client.run(TOKEN, bot=True, reconnect=True)

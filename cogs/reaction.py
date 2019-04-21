@@ -31,6 +31,10 @@ class Reaction:
             ramaneyes = get(self.client.get_all_emojis(), name='RamanEyes')
             await self.client.add_reaction(message, ramaneyes)
 
+        if 'cat' in lowercase and message.author != 'Bot_Dumbledore&#352530':
+            cat = get(self.client.get_all_emojis(), name='CatFace')
+            await self.client.add_reaction(message, cat)
+
         if 'kurwa' in lowercase:
             letter_k = "\U0001F1F0"
             letter_u = "\U0001F1FA"
